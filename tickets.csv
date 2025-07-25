@@ -1,0 +1,32 @@
+query,category
+"My payment failed",billing
+"App crashed while submitting form",technical
+"I want to update my phone number",general
+"Why was I charged twice?",billing
+"The app shows a login error",technical
+"How can I change my email address?",general
+"I'm not able to reset my password",account
+"Need a refund for my last transaction",billing
+"Unable to upload my documents",technical
+"App is stuck on the loading screen",technical
+"I want to cancel my subscription",billing
+"Change my registered mobile number",general
+"How do I delete my account?",account
+"I can't access the app on my device",technical
+"I forgot my login credentials",account
+"When will I receive my invoice?",billing
+"I'd like to update my profile picture",general
+"The app is very slow",technical
+"I want to opt out of notifications",general
+"Charged without any service",billing
+"My dashboard is not loading",technical
+"I want to know about your privacy policy",info
+"How do I contact customer support?",info
+"App keeps freezing after update",technical
+"I need to update my bank details",general
+"What's your refund policy?",info
+"The app shows a white screen",technical
+"I want to change my subscription plan",billing
+"Why is my account suspended?",account
+"Can I recover my deleted data?",account
+"App doesn't recognize my face ID",technical
