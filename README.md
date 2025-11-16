@@ -20,7 +20,7 @@ It is built using FastAPI and MongoDB, and uses a simple machine learning model 
 - Scikit-learn (machine learning)
 - TF-IDF + Logistic Regression (text classification)
 
-- ##ARIMA Forecast
+## ARIMA Forecast
 
 - ARIMA model to predict the upcoming volume of tickets
   
