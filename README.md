@@ -4,6 +4,7 @@ The Smart Ticketing System is a backend application that helps automate customer
 
 It is built using FastAPI and MongoDB, and uses a simple machine learning model (TF-IDF + Logistic Regression) for classifying the queries.
 
+## PLANNING ON CACHING FREQUENTLY OCCURING TICKETS AND RATE LIMITING TO STOP ABUSE USING REDIS
 ## Features
 
 - Classifies user queries into categories
