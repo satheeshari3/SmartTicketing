@@ -8,11 +8,29 @@ import json
 
 router = APIRouter()
 
-# ---------------------------------------------------------
+
 # CREATE TICKET + ASSIGN AGENT + INVALIDATE CACHE
-# ---------------------------------------------------------
+
 @router.post("/create-ticket")
 async def create_ticket(ticket: TicketCreate):
+
+    # RATE LIMIT (5/hour)
+    # --------------------
+    rate_key = f"rate_limit:create_ticket:{ticket.email}"   # identify user
+
+    current_count = await redis_client.get(rate_key)
+    current_count = int(current_count) if current_count else 0
+
+    if current_count >= 5:
+        raise HTTPException(
+            status_code=429,
+            detail="Rate limit exceeded: You can only create 5 tickets per hour."
+        )
+
+    if current_count == 0:
+        await redis_client.set(rate_key, 1, ex=3600)   # expires in 1 hour
+    else:
+        await redis_client.incr(rate_key)
     # Step 1: NLP Classify the ticket query
     category = classify_ticket(ticket.query)
 
@@ -45,9 +63,9 @@ async def create_ticket(ticket: TicketCreate):
     }
 
 
-# ---------------------------------------------------------
+
 # POPULAR CATEGORIES (WITH REDIS CACHING)
-# ---------------------------------------------------------
+
 @router.get("/popular-categories")
 async def get_popular_categories():
     cache_key = "popular_categories"
